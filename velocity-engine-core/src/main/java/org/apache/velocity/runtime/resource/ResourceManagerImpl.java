@@ -296,7 +296,7 @@ public class ResourceManagerImpl
         {
             try
             {
-                // avoids additional method call to refreshResource
+                // avoids additional method call to Resource
                 if (resource.requiresChecking())
                 {
                     /*
@@ -561,7 +561,8 @@ public class ResourceManagerImpl
             newResource.process();
             newResource.setLastModified(howOldItWas);
             resource = newResource;
-
+            resource.touch();
+            
             globalCache.put(resourceKey, newResource);
         }
         return resource;
